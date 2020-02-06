@@ -3,7 +3,6 @@ let speed = 900;
 document.getElementById('score').value = score;
 
 function newGame () {
-
   const canvas = document.getElementById('canv');
   const context = canvas.getContext('2d');
 
@@ -157,7 +156,6 @@ function newGame () {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ];
-  console.log(landed);
   let posY = 2;
   let posX = 4;
   let rotatePos = 0;
@@ -171,6 +169,7 @@ function newGame () {
     context.strokeRect(x * SQ, y * SQ, SQ, SQ); //Draw a field grid
   }
 
+  //Clear the board by coloring it to white color
   function clearBoard () {
     for (let r in landed) {
       for (let c in landed[r]) {
@@ -211,76 +210,69 @@ function newGame () {
 
   drawTetro(randomTetro[0], "BLUE");
 
-//Move tetro figures by arrow keys
-  function moveTetro (e) {
-    switch (e.keyCode) {
-      case 40:
-        fallingTetro();
-        break;
-      case 39:
-        if (
-          randomTetro[rotatePos][0][0] + posX === col - 1 ||
-          randomTetro[rotatePos][1][0] + posX === col - 1 ||
-          randomTetro[rotatePos][2][0] + posX === col - 1 ||
-          landed[posY][posX + 1] === 1 ||
-          landed[randomTetro[rotatePos][0][1] + posY][randomTetro[rotatePos][0][0] + posX + 1] === 1 ||
-          landed[randomTetro[rotatePos][1][1] + posY][randomTetro[rotatePos][1][0] + posX + 1] === 1 ||
-          landed[randomTetro[rotatePos][2][1] + posY][randomTetro[rotatePos][2][0] + posX + 1] === 1
-        ) {
-          break;
-        } else {
-          drawTetro(randomTetro[rotatePos], "WHITE");
-          posX++;
-          drawTetro(randomTetro[rotatePos], "BLUE");
-        }
-        break;
-      case 37:
-        if (
-          randomTetro[rotatePos][0][0] + posX === 0 ||
-          randomTetro[rotatePos][1][0] + posX === 0 ||
-          randomTetro[rotatePos][2][0] + posX === 0 ||
-          landed[posY][posX - 1] === 1 ||
-          landed[randomTetro[rotatePos][0][1] + posY][randomTetro[rotatePos][0][0] + posX - 1] === 1 ||
-          landed[randomTetro[rotatePos][1][1] + posY][randomTetro[rotatePos][1][0] + posX - 1] === 1 ||
-          landed[randomTetro[rotatePos][2][1] + posY][randomTetro[rotatePos][2][0] + posX - 1] === 1
-        ) {
-          break;
-        } else {
-          drawTetro(randomTetro[rotatePos], "WHITE");
-          posX--;
-          drawTetro(randomTetro[rotatePos], "BLUE");
-        }
-        break;
-      case 38:
-        if (randomTetro.length - 1 <= rotatePos) {
-          drawTetro(randomTetro[rotatePos], "WHITE");
-          rotatePos = 0;
-          drawTetro(randomTetro[rotatePos], "BLUE");
-        } else if (
-          posX + 1 > col - 1 || posX + 1 < 0 ||
-          randomTetro[rotatePos + 1][0][0] + posX > col - 1 || randomTetro[rotatePos + 1][0][0] + posX < 0 ||
-          randomTetro[rotatePos + 1][1][0] + posX > col - 1 || randomTetro[rotatePos + 1][1][0] + posX < 0 ||
-          randomTetro[rotatePos + 1][2][0] + posX > col - 1 || randomTetro[rotatePos + 1][2][0] + posX < 0 ||
-          landed[posY][posX + 1] === 1 ||
-          landed[randomTetro[rotatePos][0][1] + posY][randomTetro[rotatePos][0][0] + posX + 1] === 1 ||
-          landed[randomTetro[rotatePos][1][1] + posY][randomTetro[rotatePos][1][0] + posX + 1] === 1 ||
-          landed[randomTetro[rotatePos][2][1] + posY][randomTetro[rotatePos][2][0] + posX + 1] === 1 ||
-          landed[posY][posX - 1] === 1 ||
-          landed[randomTetro[rotatePos][0][1] + posY][randomTetro[rotatePos][0][0] + posX - 1] === 1 ||
-          landed[randomTetro[rotatePos][1][1] + posY][randomTetro[rotatePos][1][0] + posX - 1] === 1 ||
-          landed[randomTetro[rotatePos][2][1] + posY][randomTetro[rotatePos][2][0] + posX - 1] === 1
-        ) {
-          break;
-        } else {
-          drawTetro(randomTetro[rotatePos], "WHITE");
-          rotatePos++;
-          drawTetro(randomTetro[rotatePos], "BLUE");
-        }
-        break;
+// Move right function
+  this.right = () => {
+    if (
+      randomTetro[rotatePos][0][0] + posX === col - 1 ||
+      randomTetro[rotatePos][1][0] + posX === col - 1 ||
+      randomTetro[rotatePos][2][0] + posX === col - 1 ||
+      landed[posY][posX + 1] === 1 ||
+      landed[randomTetro[rotatePos][0][1] + posY][randomTetro[rotatePos][0][0] + posX + 1] === 1 ||
+      landed[randomTetro[rotatePos][1][1] + posY][randomTetro[rotatePos][1][0] + posX + 1] === 1 ||
+      landed[randomTetro[rotatePos][2][1] + posY][randomTetro[rotatePos][2][0] + posX + 1] === 1
+    ) {}
+    else {
+      drawTetro(randomTetro[rotatePos], "WHITE");
+      posX++;
+      drawTetro(randomTetro[rotatePos], "BLUE");
     }
   }
 
-  function fallingTetro () {
+  // Move left function
+  this.left = () => {
+    if (
+      randomTetro[rotatePos][0][0] + posX === 0 ||
+      randomTetro[rotatePos][1][0] + posX === 0 ||
+      randomTetro[rotatePos][2][0] + posX === 0 ||
+      landed[posY][posX - 1] === 1 ||
+      landed[randomTetro[rotatePos][0][1] + posY][randomTetro[rotatePos][0][0] + posX - 1] === 1 ||
+      landed[randomTetro[rotatePos][1][1] + posY][randomTetro[rotatePos][1][0] + posX - 1] === 1 ||
+      landed[randomTetro[rotatePos][2][1] + posY][randomTetro[rotatePos][2][0] + posX - 1] === 1
+    ) {}
+    else {
+      drawTetro(randomTetro[rotatePos], "WHITE");
+      posX--;
+      drawTetro(randomTetro[rotatePos], "BLUE");
+    }
+  }
+
+  // Rotate the tetro function
+  this.rotate = () => {
+    if (randomTetro.length - 1 <= rotatePos) {
+      drawTetro(randomTetro[rotatePos], "WHITE");
+      rotatePos = 0;
+      drawTetro(randomTetro[rotatePos], "BLUE");
+    } else if (
+      posX + 1 > col - 1 || posX + 1 < 0 ||
+      randomTetro[rotatePos + 1][0][0] + posX > col - 1 || randomTetro[rotatePos + 1][0][0] + posX < 0 ||
+      randomTetro[rotatePos + 1][1][0] + posX > col - 1 || randomTetro[rotatePos + 1][1][0] + posX < 0 ||
+      randomTetro[rotatePos + 1][2][0] + posX > col - 1 || randomTetro[rotatePos + 1][2][0] + posX < 0 ||
+      landed[posY][posX + 1] === 1 ||
+      landed[randomTetro[rotatePos][0][1] + posY][randomTetro[rotatePos][0][0] + posX + 1] === 1 ||
+      landed[randomTetro[rotatePos][1][1] + posY][randomTetro[rotatePos][1][0] + posX + 1] === 1 ||
+      landed[randomTetro[rotatePos][2][1] + posY][randomTetro[rotatePos][2][0] + posX + 1] === 1 ||
+      landed[posY][posX - 1] === 1 ||
+      landed[randomTetro[rotatePos][0][1] + posY][randomTetro[rotatePos][0][0] + posX - 1] === 1 ||
+      landed[randomTetro[rotatePos][1][1] + posY][randomTetro[rotatePos][1][0] + posX - 1] === 1 ||
+      landed[randomTetro[rotatePos][2][1] + posY][randomTetro[rotatePos][2][0] + posX - 1] === 1
+    ) {} else {
+      drawTetro(randomTetro[rotatePos], "WHITE");
+      rotatePos++;
+      drawTetro(randomTetro[rotatePos], "BLUE");
+    }
+  }
+
+  this.fallingTetro = () => {
     if (
       randomTetro[rotatePos][0][1] + posY + 1 === row ||
       randomTetro[rotatePos][1][1] + posY + 1 === row ||
@@ -294,7 +286,6 @@ function newGame () {
       landed[randomTetro[rotatePos][0][1] + posY][randomTetro[rotatePos][0][0] + posX] = 1;
       landed[randomTetro[rotatePos][1][1] + posY][randomTetro[rotatePos][1][0] + posX] = 1;
       landed[randomTetro[rotatePos][2][1] + posY][randomTetro[rotatePos][2][0] + posX] = 1;
-      // console.log(landed);
       for (let r in landed) {
         if (JSON.stringify(landed[r]) === JSON.stringify([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])) {
           landed.splice(r, 1);
@@ -315,6 +306,22 @@ function newGame () {
       drawTetro(randomTetro[rotatePos], "BLUE");
     }
     document.getElementById('score').value = score;
+  }
+
+  //Move tetro figures by arrow keys
+  function moveTetro (e) {
+    if (e.keyCode === 40) {
+      fallingTetro();
+    }
+    if (e.keyCode === 39) {
+      right();
+    }
+    if (e.keyCode === 37) {
+      left();
+    }
+    if (e.keyCode === 38) {
+      rotate();
+    }
   }
 
   let game = setInterval(() => {

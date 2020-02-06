@@ -28,7 +28,25 @@ input{
     font-size: 40px;
     width: 160px;
 }
-button{
+#start{
     margin: 20px auto;
     height: 50px;
+}
+#controls{
+    position: absolute;
+    margin: 300px 15px auto 10%;
+    text-align: center;
+    padding: 15px;
+}
+#rotate{
+    position: absolute;
+    margin: 300px 15px auto 70%;
+    text-align: center;
+    padding: 15px;
+}
+
+.contrl{
+    height: 50px;
+    width: 50px;
+    margin: 10px;
 }

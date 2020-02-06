@@ -8,7 +8,17 @@
 <body>
 <div id="panel">
     <input id="score" readonly type="text">
-    <button onclick="newGame()">START GAME</button>
+    <button id="start" onclick="newGame()">START GAME</button>
+</div>
+<div id="controls">
+    <div>
+        <button id="left" class="contrl" onmousedown="left()">Left</button>
+        <button id="right" class="contrl" onmousedown="right()">Right</button>
+    </div>
+    <button id="down" class="contrl" onmousedown="fallingTetro()">Down</button>
+</div>
+<div id="rotate">
+    <button id="up" class="contrl" onmousedown="rotate()">Rotate</button>
 </div>
 <div class="board">
     <canvas id="canv" height="960" width="400" ></canvas>
