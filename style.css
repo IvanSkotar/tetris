@@ -1,0 +1,31 @@
+.board{
+    width: 330px;
+    overflow: hidden;
+    height: 665px;
+    margin: 15px auto;
+    border: 1px solid black;
+}
+#canv{
+    outline: 1px solid #000;
+    display: block;
+    height: 800px;
+    width: 330px;
+    margin: -135px auto;
+}
+#panel{
+    position: absolute;
+    margin: 0px 15px auto 22%;
+    text-align: center;
+    border: 1px black solid;
+    padding: 15px;
+}
+input{
+    text-align: right;
+    display: block;
+    font-size: 40px;
+    width: 160px;
+}
+button{
+    margin: 20px auto;
+    height: 50px;
+}
