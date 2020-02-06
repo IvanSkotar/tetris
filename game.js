@@ -1,4 +1,5 @@
 let score = 0;
+let speed = 900;
 document.getElementById('score').value = score;
 
 function newGame () {
@@ -160,7 +161,6 @@ function newGame () {
   let posY = 2;
   let posX = 4;
   let rotatePos = 0;
-  let speed = 900;
 
 //Draw a square field
   function drawField (x, y, color) {
@@ -300,7 +300,7 @@ function newGame () {
           landed.splice(r, 1);
           landed.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
           score += 10;
-          speed += 20;
+          speed -= 300;
           drawBoard();
         }
       }

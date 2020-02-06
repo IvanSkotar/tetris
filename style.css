@@ -1,3 +1,6 @@
+body{
+    text-align: center;
+}
 .board{
     width: 330px;
     overflow: hidden;
@@ -14,7 +17,7 @@
 }
 #panel{
     position: absolute;
-    margin: 0px 15px auto 22%;
+    margin: 0px 15px auto 10%;
     text-align: center;
     border: 1px black solid;
     padding: 15px;
