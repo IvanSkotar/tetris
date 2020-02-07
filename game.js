@@ -1,8 +1,20 @@
 let score = 0;
-let speed = 900;
+let speed = 800;
+let level = 1;
+let game;
 document.getElementById('score').value = score;
+document.getElementById('level').innerText = `Level ${level}`;
 
-function newGame () {
+function startNewGame(){
+  score = 0;
+  speed = 800;
+  level = 1;
+  document.getElementById('level').innerText = `Level ${level}`;
+  clearInterval(game);
+  newGameCircle();
+}
+
+function newGameCircle () {
   const canvas = document.getElementById('canv');
   const context = canvas.getContext('2d');
 
@@ -291,8 +303,8 @@ function newGame () {
           landed.splice(r, 1);
           landed.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
           score += 10;
-          speed -= 300;
           drawBoard();
+          speed = speedUp();
         }
       }
       posY = 2;
@@ -324,7 +336,9 @@ function newGame () {
     }
   }
 
-  let game = setInterval(() => {
+  document.onkeydown = moveTetro;
+
+  game = setInterval(() => {
     fallingTetro();
     for (let i in landed[4]) {
       if (landed[4][i] === 1) {
@@ -332,7 +346,92 @@ function newGame () {
         clearInterval(game);
       }
     }
+    console.log(speed);
   }, speed);
 
-  document.onkeydown = moveTetro;
+  function speedUp() {
+    switch (score) {
+      case 10:
+        clearInterval(game);
+        clearBoard();
+        drawBoard();
+        speed = 700;
+        level = 2;
+        document.getElementById('level').innerText = `Level ${level}`;
+        newGameCircle();
+        break;
+      case 200:
+        clearInterval(game);
+        clearBoard();
+        drawBoard();
+        speed = 600;
+        level = 3;
+        document.getElementById('level').innerText = `Level ${level}`;
+        newGameCircle();
+        break;
+      case 300:
+        clearInterval(game);
+        clearBoard();
+        drawBoard();
+        speed = 500;
+        level = 4;
+        document.getElementById('level').innerText = `Level ${level}`;
+        newGameCircle();
+        break;
+      case 400:
+        clearInterval(game);
+        clearBoard();
+        drawBoard();
+        speed = 400;
+        level = 5;
+        document.getElementById('level').innerText = `Level ${level}`;
+        newGameCircle();
+        break;
+      case 500:
+        clearInterval(game);
+        clearBoard();
+        drawBoard();
+        speed = 300;
+        level = 6;
+        document.getElementById('level').innerText = `Level ${level}`;
+        newGameCircle();
+        break;
+      case 600:
+        clearInterval(game);
+        clearBoard();
+        drawBoard();
+        speed = 250;
+        level = 7;
+        document.getElementById('level').innerText = `Level ${level}`;
+        newGameCircle();
+        break;
+      case 700:
+        clearInterval(game);
+        clearBoard();
+        drawBoard();
+        speed = 200;
+        level = 8;
+        document.getElementById('level').innerText = `Level ${level}`;
+        newGameCircle();
+        break;
+      case 800:
+        clearInterval(game);
+        clearBoard();
+        drawBoard();
+        speed = 150;
+        level = 9;
+        document.getElementById('level').innerText = `Level ${level}`;
+        newGameCircle();
+        break;
+      case 900:
+        clearInterval(game);
+        clearBoard();
+        drawBoard();
+        speed = 100;
+        level = 10;
+        document.getElementById('level').innerText = `Level ${level}`;
+        newGameCircle();
+        break;
+    }
+  }
 }
