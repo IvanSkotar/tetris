@@ -1,26 +1,15 @@
 body{
     text-align: center;
-}
-.board{
-    width: 330px;
-    overflow: hidden;
-    height: 665px;
-    margin: 15px auto;
-    border: 1px solid black;
-}
-#canv{
-    outline: 1px solid #000;
-    display: block;
-    height: 800px;
-    width: 330px;
-    margin: -135px auto;
+    display: inline-flex;
 }
 #panel{
-    position: absolute;
-    margin: 0px 15px auto 10%;
+    margin: 15px;
     text-align: center;
     border: 1px black solid;
     padding: 15px;
+    height: 120px;
+    width: 160px;
+    display: inline-block;
 }
 input{
     text-align: right;
@@ -29,24 +18,39 @@ input{
     width: 160px;
 }
 #start{
-    margin: 20px auto;
     height: 50px;
+    margin: inherit;
 }
 #controls{
     position: absolute;
-    margin: 300px 15px auto 10%;
+    margin-top: 300px;
     text-align: center;
-    padding: 15px;
+    display: inline-block;
 }
-#rotate{
-    position: absolute;
-    margin: 300px 15px auto 70%;
-    text-align: center;
-    padding: 15px;
-}
-
 .contrl{
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
     margin: 10px;
 }
+.board{
+    width: 330px;
+    overflow: hidden;
+    height: 665px;
+    margin: 15px 30px auto 30px;
+    border: 1px solid black;
+    display: inline-block;
+}
+#canv{
+    outline: 1px solid #000;
+    display: block;
+    height: 800px;
+    width: 330px;
+    margin: -135px auto;
+}
+#rotate{
+    margin-top: 300px;
+    text-align: center;
+    display: inline-block;
+}
+
+
