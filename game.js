@@ -351,7 +351,7 @@ function newGameCircle () {
 
   function speedUp() {
     switch (score) {
-      case 10:
+      case 100:
         clearInterval(game);
         clearBoard();
         drawBoard();
