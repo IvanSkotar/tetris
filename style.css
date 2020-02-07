@@ -5,7 +5,8 @@ body{
 #panel{
     margin: 15px;
     text-align: center;
-    border: 1px black solid;
+    border: 1px #4d4e50 solid;
+    border-radius: 10px;
     padding: 15px;
     height: 120px;
     width: 160px;
@@ -15,11 +16,16 @@ input{
     text-align: right;
     display: block;
     font-size: 40px;
+    border: 1px solid #404144;
+    border-radius: 10px;
     width: inherit;
 }
 #start{
     height: 50px;
+    width: auto;
     margin: inherit;
+    border: 1px solid;
+    border-radius: 10px;
 }
 #controls{
     position: absolute;
@@ -31,13 +37,17 @@ input{
     height: 100px;
     width: 100px;
     margin: 10px;
+    border: 1px solid;
+    border-radius: 40px;
+    font-size: x-large;
 }
 .board{
     width: 330px;
     overflow: hidden;
     height: 665px;
     margin: 15px 30px auto 30px;
-    border: 1px solid black;
+    border: 50px solid #24355a;
+    border-radius: 40px;
     display: inline-block;
 }
 #canv{
