@@ -232,7 +232,7 @@ function newGameCircle () {
       landed[randomTetro[rotatePos][0][1] + posY][randomTetro[rotatePos][0][0] + posX + 1] === 1 ||
       landed[randomTetro[rotatePos][1][1] + posY][randomTetro[rotatePos][1][0] + posX + 1] === 1 ||
       landed[randomTetro[rotatePos][2][1] + posY][randomTetro[rotatePos][2][0] + posX + 1] === 1
-    ) {}
+    ) {return false}
     else {
       drawTetro(randomTetro[rotatePos], "WHITE");
       posX++;
