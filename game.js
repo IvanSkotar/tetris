@@ -228,7 +228,7 @@ async function newGameCircle () {
   drawTetro(randomTetro[0], "BLUE");
 
 // Move right function
-  const right = () => {
+  this.right = () => {
     if (
       randomTetro[rotatePos][0][0] + posX === col - 1 ||
       randomTetro[rotatePos][1][0] + posX === col - 1 ||
@@ -246,7 +246,7 @@ async function newGameCircle () {
   }
 
   // Move left function
-  const left = () => {
+  this.left = () => {
     if (
       randomTetro[rotatePos][0][0] + posX === 0 ||
       randomTetro[rotatePos][1][0] + posX === 0 ||
@@ -264,7 +264,7 @@ async function newGameCircle () {
   }
 
   // Rotate the tetro function
-  const rotate = () => {
+  this.rotate = () => {
     if (randomTetro.length - 1 <= rotatePos) {
       drawTetro(randomTetro[rotatePos], "WHITE");
       rotatePos = 0;
@@ -289,7 +289,7 @@ async function newGameCircle () {
     }
   }
 
-  const fallingTetro = () => {
+  this.fallingTetro = () => {
     if (
       randomTetro[rotatePos][0][1] + posY + 1 === row ||
       randomTetro[rotatePos][1][1] + posY + 1 === row ||
