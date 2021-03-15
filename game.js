@@ -352,7 +352,7 @@ function newGameCircle () {
 
   function speedUp() {
     switch (true) {
-      case prevScore < 20 && currentScore >= 20:
+      case prevScore < 100 && currentScore >= 100:
         clearInterval(game);
         clearBoard();
         drawBoard();
