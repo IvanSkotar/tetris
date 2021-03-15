@@ -1,3 +1,8 @@
+const canvas = document.getElementById('canv');
+const context = canvas.getContext('2d');
+const row = 24;
+const col = 10;
+const SQ = 40;
 let prevScore = 0;
 let currentScore = 0;
 let speed = 800;
@@ -16,13 +21,8 @@ function startNewGame(){
   newGameCircle();
 }
 
-function newGameCircle () {
-  const canvas = document.getElementById('canv');
-  const context = canvas.getContext('2d');
+async function newGameCircle () {
 
-  const row = 24;
-  const col = 10;
-  const SQ = 40;
   const tetromino = [
     //L type
     [
@@ -191,7 +191,7 @@ function newGameCircle () {
       }
     }
   }
-  clearBoard ();
+  await clearBoard();
 
 // Draw the game board
   function drawBoard () {
@@ -199,12 +199,15 @@ function newGameCircle () {
       for (let c in landed[r]) {
         if (landed[r][c] === 0) {
           drawField(c, r, "WHITE");
+          console.log('===redrowed to white===')
         } else {
           drawField(c, r, "BLUE");
+          console.log('===redrowed to blue===')
         }
       }
     }
   }
+  await drawBoard();
 
 // Select random tetro figure
   function random () {
@@ -301,8 +304,8 @@ function newGameCircle () {
       landed[randomTetro[rotatePos][1][1] + posY][randomTetro[rotatePos][1][0] + posX] = 1;
       landed[randomTetro[rotatePos][2][1] + posY][randomTetro[rotatePos][2][0] + posX] = 1;
       for (let r in landed) {
-        if (JSON.stringify(landed[r]) === JSON.stringify([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])) {
-          landed.splice(r, 1);
+        if (landed[r].reduce((a,b) => a + b) === 10) {
+          landed.splice(+r, 1);
           landed.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
           prevScore = currentScore;
           currentScore += 10;
@@ -352,28 +355,22 @@ function newGameCircle () {
 
   function speedUp() {
     switch (true) {
-      case prevScore < 100 && currentScore >= 100:
+      case prevScore < 20 && currentScore >= 20:
         clearInterval(game);
-        clearBoard();
-        drawBoard();
+        newGameCircle();
         speed = 700;
         level = 2;
         document.getElementById('level').innerText = `Level ${level}`;
-        newGameCircle();
         break;
-      case prevScore < 200 && currentScore >= 200:
+      case prevScore < 40 && currentScore >= 40:
         clearInterval(game);
-        clearBoard();
-        drawBoard();
         speed = 600;
         level = 3;
         document.getElementById('level').innerText = `Level ${level}`;
         newGameCircle();
         break;
-      case prevScore < 300 && currentScore >= 300:
+      case prevScore < 60 && currentScore >= 60:
         clearInterval(game);
-        clearBoard();
-        drawBoard();
         speed = 500;
         level = 4;
         document.getElementById('level').innerText = `Level ${level}`;
@@ -381,8 +378,6 @@ function newGameCircle () {
         break;
       case prevScore < 400 && currentScore >= 400:
         clearInterval(game);
-        clearBoard();
-        drawBoard();
         speed = 400;
         level = 5;
         document.getElementById('level').innerText = `Level ${level}`;
@@ -390,8 +385,6 @@ function newGameCircle () {
         break;
       case prevScore < 500 && currentScore >= 500:
         clearInterval(game);
-        clearBoard();
-        drawBoard();
         speed = 300;
         level = 6;
         document.getElementById('level').innerText = `Level ${level}`;
@@ -399,8 +392,6 @@ function newGameCircle () {
         break;
       case prevScore < 600 && currentScore >= 600:
         clearInterval(game);
-        clearBoard();
-        drawBoard();
         speed = 250;
         level = 7;
         document.getElementById('level').innerText = `Level ${level}`;
@@ -408,8 +399,6 @@ function newGameCircle () {
         break;
       case prevScore < 700 && currentScore >= 700:
         clearInterval(game);
-        clearBoard();
-        drawBoard();
         speed = 200;
         level = 8;
         document.getElementById('level').innerText = `Level ${level}`;
@@ -417,8 +406,6 @@ function newGameCircle () {
         break;
       case prevScore < 800 && currentScore >= 800:
         clearInterval(game);
-        clearBoard();
-        drawBoard();
         speed = 150;
         level = 9;
         document.getElementById('level').innerText = `Level ${level}`;
@@ -426,13 +413,14 @@ function newGameCircle () {
         break;
       case prevScore < 900 && currentScore >= 900:
         clearInterval(game);
-        clearBoard();
-        drawBoard();
         speed = 100;
         level = 10;
         document.getElementById('level').innerText = `Level ${level}`;
         newGameCircle();
         break;
+      default:
+        drawBoard();
+        break
     }
   }
 }
