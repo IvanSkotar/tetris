@@ -355,21 +355,21 @@ async function newGameCircle () {
 
   function speedUp() {
     switch (true) {
-      case prevScore < 20 && currentScore >= 20:
+      case prevScore < 100 && currentScore >= 100:
         clearInterval(game);
         newGameCircle();
         speed = 700;
         level = 2;
         document.getElementById('level').innerText = `Level ${level}`;
         break;
-      case prevScore < 40 && currentScore >= 40:
+      case prevScore < 200 && currentScore >= 200:
         clearInterval(game);
         speed = 600;
         level = 3;
         document.getElementById('level').innerText = `Level ${level}`;
         newGameCircle();
         break;
-      case prevScore < 60 && currentScore >= 60:
+      case prevScore < 300 && currentScore >= 300:
         clearInterval(game);
         speed = 500;
         level = 4;
