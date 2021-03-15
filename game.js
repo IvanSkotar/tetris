@@ -1,12 +1,14 @@
-let score = 0;
+let prevScore = 0;
+let currentScore = 0;
 let speed = 800;
 let level = 1;
 let game;
-document.getElementById('score').value = score;
+document.getElementById('score').value = currentScore;
 document.getElementById('level').innerText = `Level ${level}`;
 
 function startNewGame(){
-  score = 0;
+  prevScore = 0;
+  currentScore = 0;
   speed = 800;
   level = 1;
   document.getElementById('level').innerText = `Level ${level}`;
@@ -223,7 +225,7 @@ function newGameCircle () {
   drawTetro(randomTetro[0], "BLUE");
 
 // Move right function
-  this.right = () => {
+  const right = () => {
     if (
       randomTetro[rotatePos][0][0] + posX === col - 1 ||
       randomTetro[rotatePos][1][0] + posX === col - 1 ||
@@ -241,7 +243,7 @@ function newGameCircle () {
   }
 
   // Move left function
-  this.left = () => {
+  const left = () => {
     if (
       randomTetro[rotatePos][0][0] + posX === 0 ||
       randomTetro[rotatePos][1][0] + posX === 0 ||
@@ -259,7 +261,7 @@ function newGameCircle () {
   }
 
   // Rotate the tetro function
-  this.rotate = () => {
+  const rotate = () => {
     if (randomTetro.length - 1 <= rotatePos) {
       drawTetro(randomTetro[rotatePos], "WHITE");
       rotatePos = 0;
@@ -284,7 +286,7 @@ function newGameCircle () {
     }
   }
 
-  this.fallingTetro = () => {
+  const fallingTetro = () => {
     if (
       randomTetro[rotatePos][0][1] + posY + 1 === row ||
       randomTetro[rotatePos][1][1] + posY + 1 === row ||
@@ -302,9 +304,9 @@ function newGameCircle () {
         if (JSON.stringify(landed[r]) === JSON.stringify([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])) {
           landed.splice(r, 1);
           landed.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
-          score += 10;
-          drawBoard();
-          speed = speedUp();
+          prevScore = currentScore;
+          currentScore += 10;
+          speedUp();
         }
       }
       posY = 2;
@@ -317,7 +319,7 @@ function newGameCircle () {
       posY++;
       drawTetro(randomTetro[rotatePos], "BLUE");
     }
-    document.getElementById('score').value = score;
+    document.getElementById('score').value = currentScore;
   }
 
   //Move tetro figures by arrow keys
@@ -346,12 +348,11 @@ function newGameCircle () {
         clearInterval(game);
       }
     }
-    console.log(speed);
   }, speed);
 
   function speedUp() {
-    switch (score) {
-      case 100:
+    switch (true) {
+      case prevScore < 20 && currentScore >= 20:
         clearInterval(game);
         clearBoard();
         drawBoard();
@@ -360,7 +361,7 @@ function newGameCircle () {
         document.getElementById('level').innerText = `Level ${level}`;
         newGameCircle();
         break;
-      case 200:
+      case prevScore < 200 && currentScore >= 200:
         clearInterval(game);
         clearBoard();
         drawBoard();
@@ -369,7 +370,7 @@ function newGameCircle () {
         document.getElementById('level').innerText = `Level ${level}`;
         newGameCircle();
         break;
-      case 300:
+      case prevScore < 300 && currentScore >= 300:
         clearInterval(game);
         clearBoard();
         drawBoard();
@@ -378,7 +379,7 @@ function newGameCircle () {
         document.getElementById('level').innerText = `Level ${level}`;
         newGameCircle();
         break;
-      case 400:
+      case prevScore < 400 && currentScore >= 400:
         clearInterval(game);
         clearBoard();
         drawBoard();
@@ -387,7 +388,7 @@ function newGameCircle () {
         document.getElementById('level').innerText = `Level ${level}`;
         newGameCircle();
         break;
-      case 500:
+      case prevScore < 500 && currentScore >= 500:
         clearInterval(game);
         clearBoard();
         drawBoard();
@@ -396,7 +397,7 @@ function newGameCircle () {
         document.getElementById('level').innerText = `Level ${level}`;
         newGameCircle();
         break;
-      case 600:
+      case prevScore < 600 && currentScore >= 600:
         clearInterval(game);
         clearBoard();
         drawBoard();
@@ -405,7 +406,7 @@ function newGameCircle () {
         document.getElementById('level').innerText = `Level ${level}`;
         newGameCircle();
         break;
-      case 700:
+      case prevScore < 700 && currentScore >= 700:
         clearInterval(game);
         clearBoard();
         drawBoard();
@@ -414,7 +415,7 @@ function newGameCircle () {
         document.getElementById('level').innerText = `Level ${level}`;
         newGameCircle();
         break;
-      case 800:
+      case prevScore < 800 && currentScore >= 800:
         clearInterval(game);
         clearBoard();
         drawBoard();
@@ -423,7 +424,7 @@ function newGameCircle () {
         document.getElementById('level').innerText = `Level ${level}`;
         newGameCircle();
         break;
-      case 900:
+      case prevScore < 900 && currentScore >= 900:
         clearInterval(game);
         clearBoard();
         drawBoard();
