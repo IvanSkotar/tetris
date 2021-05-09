@@ -6,6 +6,7 @@ body{
 }
 #panel{
     font-size: 25px;
+    font-family: arial, sans-serif;
     position: absolute;
     display: flex;
     width: 322px;
@@ -17,6 +18,9 @@ body{
     height: 45px;
     border-radius: 15px;
     margin-top: -55px;
+    background-color: #5a6a8c;
+    color: white;
+    font-weight: bold;
 }
 .board{
     overflow: hidden;
