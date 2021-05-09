@@ -1,55 +1,31 @@
 body{
     text-align: center;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #panel{
-    margin: 15px;
-    font-size: 40px;
-    border: 1px #4d4e50 solid;
-    border-radius: 10px;
-    padding: 15px;
-    height: max-content;
-}
-input{
-    text-align: right;
-    display: block;
-    font-size: 40px;
-    border-radius: 10px;
-    width: 155px;
+    font-size: 25px;
+    position: absolute;
+    display: flex;
+    width: 322px;
+    justify-content: space-between;
+    padding: 5px;
+    background: #ffffffa1;
 }
 #start{
-    height: 50px;
-    border-radius: 10px;
-}
-#controls{
-    position: absolute;
-    margin-top: 300px;
-}
-.contrl{
-    height: 100px;
-    width: 100px;
-    margin: 10px;
-    border-radius: 40px;
-    font-size: x-large;
+    height: 45px;
+    border-radius: 15px;
+    margin-top: -55px;
 }
 .board{
     overflow: hidden;
     height: 665px;
-    margin: 15px 30px auto 30px;
     border: 35px solid #24355a;
+    border-bottom: 70px solid #24355a;
     border-radius: 40px;
 }
-#canv{
+canvas{
     height: 800px;
     margin: -135px auto;
 }
-#rotate{
-    margin-top: 300px;
-}
-#info{
-    font-size: 20px;
-    position: absolute;
-    margin-top: 570px;
-    text-align: left;
-}
-

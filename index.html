@@ -4,33 +4,16 @@
     <meta charset="UTF-8">
     <title>Canvas</title>
     <link href="style.css" rel="stylesheet" type="text/css">
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=0.7, user-scalable=no"></head>
 <body>
-<div id="panel">
-    <div id="level"></div>
-    <input id="score" readonly>
-    <button id="start" onclick="startNewGame()">NEW GAME</button>
-</div>
-<div id="controls">
-    <div>
-        <button id="left" class="contrl" onmousedown="left()">Left</button>
-        <button id="right" class="contrl" onmousedown="right()">Right</button>
-    </div>
-    <button id="down" class="contrl" onmousedown="fallingTetro()">Down</button>
-</div>
-<div id="info">
-    <p><b>Keyboard controls:</b></p>
-    Move left - arrow "Left"<br>
-    Move right - arrow "Right"<br>
-    Move down - arrow "Down"<br>
-    Rotate - arrow "Up"<br>
-</div>
 <div class="board">
-    <canvas id="canv" height="960" width="400" ></canvas>
+    <div id="panel">
+        <div id="level"></div>
+        <div id="score"></div>
+    </div>
+    <canvas id="canvas" height="960" width="400"></canvas>
 </div>
-<div id="rotate">
-    <button id="up" class="contrl" onmousedown="rotate()">Rotate</button>
-</div>
-<script type="application/javascript" src="game.js"></script>
+<button id="start" onclick="startNewGame()">NEW GAME</button>
+<script type="text/javascript" src="./game.js"></script>
 </body>
 </html>
