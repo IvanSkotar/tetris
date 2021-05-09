@@ -278,7 +278,7 @@ async function newGameCircle () {
           landed.splice(+r, 1);
           landed.unshift([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
           prevScore = currentScore;
-          currentScore += 100;
+          currentScore += 10;
           speedUp();
         }
       }
